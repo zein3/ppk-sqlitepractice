@@ -53,4 +53,27 @@ class DBHandler(
         db.close()
     }
 
+    fun readMahasiswa(): List<MahasiswaModal> {
+        val db = this.writableDatabase
+        val cursor = db.rawQuery("SELECT * FROM $TABLE_NAME", null)
+
+        val mahasiswaModalArrayList = arrayListOf<MahasiswaModal>()
+
+        if (cursor.moveToFirst()) {
+            do {
+                mahasiswaModalArrayList.add(
+                    MahasiswaModal(
+                        cursor.getString(1),
+                        cursor.getString(2),
+                        cursor.getString(3),
+                        cursor.getString(4)
+                    )
+                )
+            } while (cursor.moveToNext())
+        }
+
+        cursor.close()
+        return mahasiswaModalArrayList
+    }
+
 }

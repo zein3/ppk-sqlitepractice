@@ -1,5 +1,6 @@
 package com.polstat.sqlitepractice
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -12,6 +13,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var kelas: EditText
     private lateinit var nohp: EditText
     private lateinit var addMhs: Button
+    private lateinit var lihatMhs: Button
     private lateinit var dbHandler: DBHandler
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,6 +25,7 @@ class MainActivity : AppCompatActivity() {
         kelas = findViewById(R.id.kelasEditText)
         nohp = findViewById(R.id.nohpEditText)
         addMhs = findViewById(R.id.tambahButton)
+        lihatMhs = findViewById(R.id.lihatButton)
 
         dbHandler = DBHandler(this)
         addMhs.setOnClickListener {
@@ -43,6 +46,11 @@ class MainActivity : AppCompatActivity() {
             nama.setText("")
             kelas.setText("")
             nohp.setText("")
+        }
+
+        lihatMhs.setOnClickListener {
+            val i = Intent(this, ViewMahasiswa::class.java)
+            startActivity(i)
         }
     }
 }

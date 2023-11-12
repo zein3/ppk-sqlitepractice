@@ -47,6 +47,14 @@
             android:layout_margin="10dp"
             android:text="Simpan Data"
             android:textAllCaps="false" />
+        <Button
+            android:id="@+id/lihatButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:text="lihat Data"
+            android:textAllCaps="false" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
