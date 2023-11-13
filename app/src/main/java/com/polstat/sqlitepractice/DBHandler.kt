@@ -89,4 +89,10 @@ class DBHandler(
         db.close()
     }
 
+    fun deleteMahasiswa(nim: String) {
+        val db = this.writableDatabase
+        db.delete(TABLE_NAME, "nim=?", arrayOf(nim))
+        db.close()
+    }
+
 }

@@ -14,6 +14,7 @@ class UpdateMahasiswaActivity : AppCompatActivity() {
     private lateinit var kelasEdt: EditText
     private lateinit var nohpEdt: EditText
     private lateinit var updateMahasiswaBtn: Button
+    private lateinit var deleteMahasiswaBtn: Button
     private lateinit var dbHandler: DBHandler
     private lateinit var nim: String
     private lateinit var nama: String
@@ -29,6 +30,7 @@ class UpdateMahasiswaActivity : AppCompatActivity() {
         kelasEdt = findViewById(R.id.kelasEdtEditText)
         nohpEdt = findViewById(R.id.nohpEdtEditText)
         updateMahasiswaBtn = findViewById(R.id.updateButton)
+        deleteMahasiswaBtn = findViewById(R.id.deleteButton)
 
         dbHandler = DBHandler(this)
 
@@ -52,6 +54,14 @@ class UpdateMahasiswaActivity : AppCompatActivity() {
             )
 
             Toast.makeText(this, "Mahasiswa telah di-Update..", Toast.LENGTH_SHORT).show()
+
+            val i = Intent(this, MainActivity::class.java)
+            startActivity(i)
+        }
+
+        deleteMahasiswaBtn.setOnClickListener {
+            dbHandler.deleteMahasiswa(nim)
+            Toast.makeText(this, "Mahasiswa telah di-Delete..", Toast.LENGTH_SHORT).show()
 
             val i = Intent(this, MainActivity::class.java)
             startActivity(i)
