@@ -1,6 +1,7 @@
 package com.polstat.sqlitepractice
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 class MahasiswaRVAdapter(
     val mahasiswaModalList: List<MahasiswaModal>,
-    context: Context
+    val context: Context
 ) : RecyclerView.Adapter<MahasiswaRVAdapter.ViewHolder>() {
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -39,6 +40,16 @@ class MahasiswaRVAdapter(
         holder.namaTV.text = modal.nama
         holder.kelasTV.text = modal.kelas
         holder.nohpTV.text = modal.nohp
+
+        holder.itemView.setOnClickListener {
+            val i = Intent(context, UpdateMahasiswaActivity::class.java)
+            i.putExtra("nim", modal.nim)
+            i.putExtra("nama", modal.nama)
+            i.putExtra("kelas", modal.kelas)
+            i.putExtra("nohp", modal.nohp)
+
+            context.startActivity(i)
+        }
     }
 
 }

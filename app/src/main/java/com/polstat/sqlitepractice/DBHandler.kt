@@ -76,4 +76,17 @@ class DBHandler(
         return mahasiswaModalArrayList
     }
 
+    fun updateMahasiswa(originalNim: String, nim: String, nama: String, kelas: String, nohp: String) {
+        val db = this.writableDatabase
+        val values = ContentValues()
+
+        values.put(NIM_COL, nim)
+        values.put(NAMA_COL, nama)
+        values.put(KELAS_COL, kelas)
+        values.put(NOHP_COL, nohp)
+
+        db.update(TABLE_NAME, values, "nim=?", arrayOf(originalNim))
+        db.close()
+    }
+
 }

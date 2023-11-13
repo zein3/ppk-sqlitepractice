@@ -15,6 +15,9 @@
         android:theme="@style/Theme.SQLitePractice"
         tools:targetApi="31">
         <activity
+            android:name=".UpdateMahasiswaActivity"
+            android:exported="false" />
+        <activity
             android:name=".ViewMahasiswa"
             android:exported="false" />
         <activity
